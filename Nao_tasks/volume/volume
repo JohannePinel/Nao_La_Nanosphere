@@ -1,0 +1,34 @@
+choix_d = tk.Radiobutton(fenetre_tasks, text="Changer le Volume", variable=curseur, value="volume")
+
+
+
+if selected_choice_tasks =="volume":
+
+    fenetre_vol = tk.Tk()
+    fenetre_vol.geometry("400x200")
+    fenetre_vol.title("Volume de NAO")
+
+    volume_value = tk.IntVar()
+
+    # Fonction pour mettre à jour l'affichage du pourcentage
+    def update_percentage(val):
+        volume_label.config(text=f"Volume : {volume_value.get()} %")
+
+    def valider_volume():
+        print(f"Le volume sélectionné est : {volume_value.get()} %")
+        global volume
+        volume = volume_value.get()
+        print(volume)
+        fichier_output = "/home/gabriel/Documents/nao/nao_softwarev3/Nao_tasks/volume/volume.py"
+        subprocess.call(["python2",fichier_output, str(creches_ROBOT_IP[int(selected_choice)]), str(volume)])
+
+    curseur_volume = tk.Scale(fenetre_vol, from_=0, to=100, orient="horizontal", variable=volume_value, command=update_percentage)
+    curseur_volume.pack(pady=10)
+
+    volume_label = tk.Label(fenetre_vol, text="Volume : 0 %")
+    volume_label.pack(pady=10)
+    
+    bouton_valider = tk.Button(fenetre_vol, text="Valider", command=valider_volume)
+    bouton_valider.pack(pady=10)
+    
+    fenetre_vol.mainloop()
