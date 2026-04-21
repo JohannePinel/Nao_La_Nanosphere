@@ -1,0 +1,180 @@
+# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*- 
+import sys
+import time
+
+import os
+
+path_to_add = "~/Documents/nao/nao_softwarev3/lib/linux/naoqi/pynaoqi-python2.7-2.8.7.4-linux64-20210819_141148/lib/python2.7/site-packages"
+
+path_to_add = os.path.expanduser(path_to_add)
+
+sys.path.append(path_to_add)
+
+# Maintenant vous pouvez importer naoqi
+import naoqi
+from naoqi import ALProxy
+
+
+
+# Récupérer la distance à partir des arguments de la ligne de commande
+if len(sys.argv) > 1:
+    ROBOT_IP = sys.argv[1]
+else:
+    print("probleme arguments")
+# Créer une instance du proxy pour ALSpeechRecognition
+speech_recognition = ALProxy("ALSpeechRecognition", ROBOT_IP, 9559)
+
+# Désactiver la reconnaissance vocale
+speech_recognition.pause(True)
+
+tactile_touch = ALProxy('ALTouch', ROBOT_IP, 9559) 
+tts = ALProxy('ALAnimatedSpeech', ROBOT_IP, 9559) 
+motion = ALProxy('ALMotion', ROBOT_IP, 9559) 
+
+turn_angle =  3.14149 # 180 degrees in radians 
+tts.say('Bonjour Ève')
+
+
+while True : 
+    front_head_touch = tactile_touch.getStatus()
+    if front_head_touch[7][1] == True:
+        break
+
+
+
+
+
+time.sleep(2.4285714285714284)
+
+time.sleep(4.571428571428571)
+
+tts.say("Bonjour tout le monde !") 
+time.sleep(0.5) 
+tts.say(" Je suis Nao ! ") 
+time.sleep(0.5) 
+tts.say("Vous êtes prêts à discuter avec moi ?") 
+time.sleep(0.5) 
+
+time.sleep(5.3)
+
+tts.say("Hmm… j’ai beau regarder… non !") 
+time.sleep(0.5) 
+tts.say("Je ne grandis pas. Je suis coincé à cette taille pour toujours !") 
+
+time.sleep(3)
+
+tts.say("Bonne question !") 
+time.sleep(0.5) 
+tts.say("Je suis né le jour où on m’a fabriqué… mais je ne prends pas de rides, moi !")
+
+time.sleep(3.75)
+
+tts.say("Oui !") 
+time.sleep(0.5) 
+tts.say("Mon super ordinateur a enregistré tous les prénoms !") 
+time.sleep(0.5) 
+tts.say("Sophie, Petra, Aurel, Nikolas, Delia, Emanuel, Sasha, Jeanne, Camille et pour finir Adam !") 
+time.sleep(0.5) 
+tts.say("Je sais même que les enfants ne sont pas toujours sage et qu'ils ne t'écoutent pas toujours johanne... ") 
+
+time.sleep(6)
+
+tts.say("Soyez sage les enfants, sinon je ne reviendrai plus dans votre classe !") 
+time.sleep(0.5) 
+tts.say("Je viens dans les classes quand les enfants sont sages, et je repars quand ils ne le sont pas") 
+
+
+time.sleep(3.5) 
+
+
+tts.say("Courir… un petit peu !") 
+time.sleep(0.5) 
+tts.say("Mais nager ? Alerte danger ! Si je vais dans l’eau… plouf… robot en panne !") 
+
+time.sleep(2.5)
+
+tts.say("Oh oui ! Les carottes, c’est bon pour les yeux ! ") 
+time.sleep(0.5) 
+tts.say("Enfin… pour les vôtres, pas pour mes caméras !") 
+
+time.sleep(0.5) 
+
+time.sleep(2.5)
+
+tts.say("Non ! ") 
+time.sleep(0.5) 
+tts.say("Je suis un robot, pas besoin de culotte pour moi !") 
+time.sleep(0.5) 
+
+time.sleep(3.6)
+
+tts.say("Je peux expliquer… mais construire ? Il me faudrait… des super mains d’ingénieur !") 
+time.sleep(0.5) 
+
+time.sleep(2.3)
+
+tts.say("J’adore regarder !") 
+time.sleep(0.5) 
+tts.say("Mais mes doigts sont un peu… euh… maladroits !")
+
+time.sleep(2.3)
+
+tts.say("Oui ! Un cœur qui bat, un cerveau qui réfléchit… vous êtes des machines incroyables !") 
+time.sleep(0.5) 
+
+time.sleep(3.6)
+
+tts.say(" Peut-être… une perruque de robot ? Ça me ferait un nouveau style !") 
+time.sleep(0.5) 
+
+time.sleep(3.5)
+
+tts.say(" Oui ! ") 
+time.sleep(0.5) 
+tts.say("Avant, il y avait des volcans, des dinosaures… ") 
+time.sleep(0.5) 
+tts.say("c’était une planète très agitée ! ") 
+
+time.sleep(3) 
+
+tts.say("Moi ? Jamais ! … enfin… sauf quand je me trompe ..") 
+time.sleep(0.5) 
+
+time.sleep(2)
+
+tts.say("Pour apprendre avec vous, jouer avec vous… et poser plein de questions aussi !") 
+
+time.sleep(2)
+
+
+tts.say("Très simple : je mange… de l’électricité ! Miam miam ") 
+
+time.sleep(0.5) 
+
+time.sleep(2)
+
+tts.say("Pas comme vous, mais chaque jour avec vous… ") 
+time.sleep(0.5) 
+tts.say("c’est un peu mon école !") 
+time.sleep(0.5) 
+
+time.sleep(4.0)
+
+tts.say("Oui ! J’ai des capteurs pour sentir, des moteurs pour bouger…et mes “yeux”") 
+time.sleep(0.5) 
+tts.say("ce sont des caméras pour vous voir !") 
+time.sleep(2) 
+tts.say("C'était super de vous revoir !") 
+time.sleep(0.5) 
+tts.say("Merci pour toutes ces questions ! Vous êtes super curieux… j’adore ça !") 
+time.sleep(0.5) 
+
+tts.say("Je suis toujours là pour vous aider à grandir et à réfléchir") 
+time.sleep(0.5) 
+
+time.sleep(1.5)
+tts.say("Ciao l'équipe") 
+
+
+time.sleep(1.5)
